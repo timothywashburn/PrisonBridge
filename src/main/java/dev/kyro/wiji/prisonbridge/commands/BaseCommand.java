@@ -1,7 +1,8 @@
 package dev.kyro.wiji.prisonbridge.commands;
 
 import dev.kyro.wiji.prisonbridge.commands.subcommands.AdminBlocksCommand;
-import dev.kyro.wiji.prisonbridge.commands.subcommands.TestSubCommand;
+import dev.kyro.wiji.prisonbridge.commands.subcommands.SetPrestigeCommand;
+import dev.kyro.wiji.prisonbridge.commands.subcommands.SetRankCommand;
 import dev.kyro.wiji.prisonbridge.misc.AMisc;
 import dev.kyro.wiji.prisonbridge.objects.SubCommand;
 import org.bukkit.command.Command;
@@ -19,9 +20,8 @@ public class BaseCommand implements CommandExecutor, TabCompleter {
 
 	public BaseCommand() {
 		subCommands.add(new AdminBlocksCommand());
-//		subCommands.add(new SetPrestigeCommand());
-//		subCommands.add(new SetRankCommand());
-		subCommands.add(new TestSubCommand());
+		subCommands.add(new SetPrestigeCommand());
+		subCommands.add(new SetRankCommand());
 	}
 
 	@Override

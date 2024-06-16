@@ -36,9 +36,9 @@ public class AdminBlocksCommand extends SubCommand {
 				return;
 			}
 
-			Player target = getTarget(args.get(1));
+			Player target = Bukkit.getPlayer(args.get(1));
 			if(target == null) {
-				AMisc.sendConfigurableMessage(sender, "commands.admin.blocks.playernotfound", m -> m.replace("{player}", args.get(1)));
+				AMisc.sendConfigurableMessage(sender, "commands.generic.notarget", m -> m.replace("{player}", args.get(1)));
 				return;
 			}
 
@@ -63,9 +63,9 @@ public class AdminBlocksCommand extends SubCommand {
 				return;
 			}
 
-			Player target = getTarget(args.get(1));
+			Player target = Bukkit.getPlayer(args.get(1));
 			if(target == null) {
-				AMisc.sendConfigurableMessage(sender, "commands.admin.blocks.playernotfound", m -> m.replace("{player}", args.get(1)));
+				AMisc.sendConfigurableMessage(sender, "commands.generic.notarget", m -> m.replace("{player}", args.get(1)));
 				return;
 			}
 
@@ -94,9 +94,9 @@ public class AdminBlocksCommand extends SubCommand {
 				return;
 			}
 
-			Player target = getTarget(args.get(1));
+			Player target = Bukkit.getPlayer(args.get(1));
 			if(target == null) {
-				AMisc.sendConfigurableMessage(sender, "commands.admin.blocks.playernotfound", m -> m.replace("{player}", args.get(1)));
+				AMisc.sendConfigurableMessage(sender, "commands.generic.notarget", m -> m.replace("{player}", args.get(1)));
 				return;
 			}
 
@@ -141,16 +141,5 @@ public class AdminBlocksCommand extends SubCommand {
 		}
 
 		return null;
-	}
-
-	public Player getTarget(String targetName) {
-		Player target = null;
-		for(Player player : Bukkit.getOnlinePlayers()) {
-			if(player.getName().equalsIgnoreCase(targetName)) {
-				target = player;
-				break;
-			}
-		}
-		return target;
 	}
 }

@@ -2,8 +2,11 @@ package dev.kyro.wiji.prisonbridge;
 
 import com.google.common.base.Charsets;
 import dev.kyro.wiji.prisonbridge.commands.BaseCommand;
+import dev.kyro.wiji.prisonbridge.controllers.LevelManager;
 import dev.kyro.wiji.prisonbridge.controllers.PAPIExtension;
+import dev.kyro.wiji.prisonbridge.controllers.PlayerManager;
 import dev.kyro.wiji.prisonbridge.sql.TableManager;
+import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -42,7 +45,8 @@ public class PrisonBridge extends JavaPlugin {
 	}
 
 	public void registerListeners() {
-
+		Bukkit.getPluginManager().registerEvents(new PlayerManager(), this);
+		Bukkit.getPluginManager().registerEvents(new LevelManager(), this);
 	}
 
 	public void initConfig() {
@@ -65,7 +69,7 @@ public class PrisonBridge extends JavaPlugin {
 	public static String getLang(String path) {
 		File file = new File(INSTANCE.getServer().getPluginsFolder().getPath() + "/lang.yml");
 		YamlConfiguration config = YamlConfiguration.loadConfiguration(file);
-
+		new RuntimeException("WARNING! Config missing path: " + path).printStackTrace();
 		return config.getString(path);
 	}
 }
