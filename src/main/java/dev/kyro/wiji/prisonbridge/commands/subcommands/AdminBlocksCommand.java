@@ -18,11 +18,6 @@ public class AdminBlocksCommand extends SubCommand {
 	}
 
 	@Override
-	public String getDescription() {
-		return "Modifies a player's blocks";
-	}
-
-	@Override
 	public String getUsageMessage() {
 		return "<add|remove|set> <target> <amount>";
 	}

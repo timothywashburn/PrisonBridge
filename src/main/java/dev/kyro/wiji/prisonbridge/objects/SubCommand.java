@@ -15,7 +15,6 @@ public abstract class SubCommand {
 		this.executor = executor;
 	}
 
-	public abstract String getDescription();
 	public abstract String getUsageMessage();
 	public abstract void execute(CommandSender sender, Command command, String label, List<String> args);
 
