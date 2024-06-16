@@ -1,10 +1,9 @@
 package dev.kyro.wiji.prisonbridge;
 
 import com.google.common.base.Charsets;
+import dev.kyro.wiji.prisonbridge.commands.BaseCommand;
 import dev.kyro.wiji.prisonbridge.controllers.PAPIExtension;
 import dev.kyro.wiji.prisonbridge.sql.TableManager;
-import me.revils.revenchants.api.RevEnchantsApi;
-import org.bukkit.configuration.Configuration;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -12,6 +11,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.io.File;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.Objects;
 
 public class PrisonBridge extends JavaPlugin {
 	public static PrisonBridge INSTANCE;
@@ -25,6 +25,9 @@ public class PrisonBridge extends JavaPlugin {
 		new PAPIExtension("prisonbridge").register();
 
 		initConfig();
+
+		registerCommands();
+		registerListeners();
 	}
 
 	@Override
@@ -32,11 +35,13 @@ public class PrisonBridge extends JavaPlugin {
 
 	}
 
-	public void registerListeners() {
-
+	public void registerCommands() {
+		BaseCommand baseCommand = new BaseCommand();
+		Objects.requireNonNull(getCommand("prisonbridge")).setExecutor(baseCommand);
+		Objects.requireNonNull(getCommand("prisonbridge")).setTabCompleter(baseCommand);
 	}
 
-	public void registerCommands() {
+	public void registerListeners() {
 
 	}
 

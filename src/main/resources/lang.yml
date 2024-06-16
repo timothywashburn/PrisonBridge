@@ -1,11 +1,19 @@
 commands:
   blocks:
-    self: "&9&lBLOCKS!&7 You have &9%1"
-    other: "&9BLOCK!&7 %1 has &9%2"
-    notarget: "&c&lERROR!&7 Could not find the player %1"
+    self: "&9&lBLOCKS!&7 You have &9{blocks}"
+    other: "&9BLOCK!&7 {target} has &9{blocks}"
+    notarget: "&c&lERROR!&7 Could not find the player {target}"
   prestige:
     notmaxlevel: "&c&lERROR!&7You need to reach the last rank before you can prestige"
     maxprestige: "&c&lERROR!&7You are already the max prestige"
   rankup:
-    notenoughblocks: "&c&lERROR!&7You need another &9%1 &7before you can rankup"
+    notenoughblocks: "&c&lERROR!&7You need another &9{blocks} &7before you can rankup"
     maxrank: "&c&lERROR!&7You are already the max rank"
+  admin:
+    blocks:
+      playernotfound: "&c&lERROR!&7Could not find the player {target}"
+      added: "&9&lBLOCKS!&9{blocks} &7have been given to &9{target}"
+      received: "&9&lBLOCKS!&7You have received &9{blocks}"
+      removed: "&9&lBLOCKS!&7{blocks} have been removed from &9{target}"
+      notenough: "&c&lERROR!&7{target} only has &9{blocks}"
+      set: "&9&lBLOCKS!&7{target} now has &9{blocks}"

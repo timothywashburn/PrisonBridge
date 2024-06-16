@@ -7,8 +7,6 @@ import org.bukkit.entity.Player;
 import tech.mcprison.prison.util.ChatColor;
 
 import java.text.DecimalFormat;
-import java.util.function.Consumer;
-import java.util.function.Supplier;
 
 public class AMisc {
 	public static DecimalFormat blocksFormat = new DecimalFormat("#,##0");
@@ -23,15 +21,17 @@ public class AMisc {
 	}
 
 	public static void sendMessage(CommandSender sender, String message) {
+		if(message == null) return;
 		if(!(sender instanceof Player player)) {
 			System.out.println(message);
 			return;
 		}
 
-		player.sendMessage(ChatColor.translateAlternateColorCodes('&', ""));
+		player.sendMessage(ChatColor.translateAlternateColorCodes('&', message));
 	}
 
 	public static void broadcastMessage(String message) {
+		if(message == null) return;
 		Bukkit.broadcastMessage(ChatColor.translateAlternateColorCodes('&', message));
 	}
 

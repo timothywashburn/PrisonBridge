@@ -1,13 +1,11 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 plugins {
     id 'java'
     id("org.jetbrains.kotlin.jvm") version "1.9.22"
     id 'io.papermc.paperweight.userdev' version '1.5.11'
 }
 
-group = 'com.example'
-version = '1.0-SNAPSHOT'
+group = 'dev.kyro.wiji'
+version = ''
 
 repositories {
     mavenCentral()

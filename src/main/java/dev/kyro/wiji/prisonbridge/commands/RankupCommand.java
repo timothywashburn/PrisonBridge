@@ -24,7 +24,7 @@ public class RankupCommand implements CommandExecutor {
 
 		if(!prisonPlayer.canRankup()) {
 			AMisc.sendConfigurableMessage(player, "commands.rankup.notenoughblocks",
-					m -> m.replace("%1", AMisc.formatBlocks(prisonPlayer.getRemainingBlocksToRankup())));
+					m -> m.replace("{blocks}", AMisc.formatBlocks(prisonPlayer.getRemainingBlocksToRankup())));
 			return false;
 		}
 
