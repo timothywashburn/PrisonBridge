@@ -12,11 +12,15 @@ version = '1.0-SNAPSHOT'
 repositories {
     mavenCentral()
     maven { url 'https://papermc.io/repo/repository/maven-public/' }
-    maven { url 'https://mvn.lumine.io/repository/maven-public/'}
+    maven { url 'https://repo.extendedclip.com/content/repositories/placeholderapi/'}
 }
 
 dependencies {
-    implementation 'com.ticxo.modelengine:ModelEngine:R4.0.6'
+    implementation files('libs/RevEnchants.jar')
+    implementation files('libs/Prison.jar')
+
+    implementation('me.clip:placeholderapi:2.11.6')
+
     paperweight.paperDevBundle("1.20.4-R0.1-SNAPSHOT")
 }
 

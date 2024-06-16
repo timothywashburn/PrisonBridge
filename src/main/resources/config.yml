@@ -1,0 +1,37 @@
+# JDBC Connection String (Google it)
+sql-url: "localhost"
+sql-user: "admin"
+sql-pass: "password"
+
+ranks: # Block amount for each Level
+  A: 10
+  B: 20
+  C: 50
+  D: 100
+  E: 200
+  F: 400
+  G: 800
+  H: 1600
+  I: 3200
+  K: 6400
+  L: 12000
+  M: 24000
+  N: 48000
+  O: 96000
+  P: 100000
+  Q: 200000
+  R: 300000
+  S: 400000
+  T: 500000
+  U: 600000
+  V: 700000
+  W: 800000
+  X: 900000
+  Y: 1000000
+  Z: 10000000
+
+prestiges: # Block multiplier from base for each Prestige
+  0: 1
+  1: 1.25
+  2: 2
+  3: 3

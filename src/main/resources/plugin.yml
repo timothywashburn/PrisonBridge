@@ -5,4 +5,13 @@ authors:
   - wiji
 version: 1.0.0
 depend:
+  - Prison
+  - RevEnchants
 commands:
+  prisonbridge:
+    aliases:
+      - pb
+  blocks:
+  prestige:
+  rankup:
+  atest:

@@ -1,0 +1,11 @@
+commands:
+  blocks:
+    self: "&9&lBLOCKS!&7 You have &9%1"
+    other: "&9BLOCK!&7 %1 has &9%2"
+    notarget: "&c&lERROR!&7 Could not find the player %1"
+  prestige:
+    notmaxlevel: "&c&lERROR!&7You need to reach the last rank before you can prestige"
+    maxprestige: "&c&lERROR!&7You are already the max prestige"
+  rankup:
+    notenoughblocks: "&c&lERROR!&7You need another &9%1 &7before you can rankup"
+    maxrank: "&c&lERROR!&7You are already the max rank"
