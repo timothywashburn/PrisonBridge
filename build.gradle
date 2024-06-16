@@ -1,20 +1,36 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins {
     id 'java'
-    id 'com.github.johnrengelman.shadow' version '6.1.0'
+    id("org.jetbrains.kotlin.jvm") version "1.9.22"
+    id 'io.papermc.paperweight.userdev' version '1.5.11'
 }
 
-group 'net.pitsim'
-version ''
+group = 'com.example'
+version = '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
+    maven { url 'https://papermc.io/repo/repository/maven-public/' }
+    maven { url 'https://mvn.lumine.io/repository/maven-public/'}
 }
 
 dependencies {
+    implementation 'com.ticxo.modelengine:ModelEngine:R4.0.6'
+    paperweight.paperDevBundle("1.20.4-R0.1-SNAPSHOT")
 }
 
-gradle.projectsEvaluated {
-    tasks.withType(JavaCompile) {
-        options.compilerArgs << '-Xmaxerrs' << '1000'
+tasks {
+    compileJava {
+        options.release = 17
+    }
+
+    reobfJar {
+        outputJar = layout.buildDirectory.file("libs/${project.name}-${project.version}.jar")
     }
 }
+
+tasks.assemble {
+    dependsOn(tasks.reobfJar)
+}
+

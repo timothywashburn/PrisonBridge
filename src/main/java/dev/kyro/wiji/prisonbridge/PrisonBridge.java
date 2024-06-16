@@ -1,4 +1,15 @@
 package dev.kyro.wiji.prisonbridge;
 
-public class PrisonBridge {
+import org.bukkit.plugin.java.JavaPlugin;
+
+public class PrisonBridge extends JavaPlugin {
+
+	public void onEnable() {
+
+	}
+
+	public void onDisable() {
+
+	}
+
 }

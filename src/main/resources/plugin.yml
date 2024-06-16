@@ -1,0 +1,5 @@
+name: PrisonBridge
+main: dev.kyro.wiji.prisonbridge.PrisonBridge
+version: 1.0.0
+depend:
+commands:
