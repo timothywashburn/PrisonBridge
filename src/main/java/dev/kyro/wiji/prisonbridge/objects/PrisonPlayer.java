@@ -25,8 +25,6 @@ public class PrisonPlayer {
 		this.uuid = uuid;
 
 		load();
-
-		PlayerManager.prisonPlayerList.add(this);
 	}
 
 	private long getRequiredBlocksForRankup() {
