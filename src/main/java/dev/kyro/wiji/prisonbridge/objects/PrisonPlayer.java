@@ -40,11 +40,15 @@ public class PrisonPlayer {
 	}
 
 	public String getBlocksFormatted() {
-		return AMisc.formatBlocks(blocks);
+		return getBlocksFormatted(false);
+	}
+
+	public String getBlocksFormatted(boolean capitalize) {
+		return AMisc.formatBlocks(blocks, capitalize);
 	}
 
 	public String getRankFormatted() {
-		return String.valueOf(rank);
+		return String.valueOf((char) (65 + rank));
 	}
 
 	public String getPrestigeFormatted() {

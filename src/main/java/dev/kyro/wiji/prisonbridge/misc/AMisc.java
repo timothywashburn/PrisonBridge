@@ -36,6 +36,10 @@ public class AMisc {
 	}
 
 	public static String formatBlocks(long blocks) {
-		return blocksFormat.format(blocks) + " block" + (blocks == 1 ? "" : "s");
+		return formatBlocks(blocks, false);
+	}
+
+	public static String formatBlocks(long blocks, boolean capitalize) {
+		return blocksFormat.format(blocks) + " " + (capitalize ? "B" : "b") + "lock" + (blocks == 1 ? "" : "s");
 	}
 }
