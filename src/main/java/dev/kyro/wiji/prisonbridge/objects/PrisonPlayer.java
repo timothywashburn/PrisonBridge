@@ -17,9 +17,9 @@ import java.util.UUID;
 
 public class PrisonPlayer {
 	public UUID uuid;
-	public long blocks;
-	public int prestige;
-	public int rank;
+	public Long blocks;
+	public Integer prestige;
+	public Integer rank;
 
 	public PrisonPlayer(UUID uuid) {
 		this.uuid = uuid;

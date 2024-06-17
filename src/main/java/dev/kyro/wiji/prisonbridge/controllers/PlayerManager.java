@@ -51,8 +51,8 @@ public class PlayerManager implements Listener {
 	public void onLeave(PlayerQuitEvent event) {
 		PrisonPlayer prisonPlayer = getPrisonPlayer(event.getPlayer().getUniqueId());
 		assert prisonPlayer != null;
-
 		prisonPlayer.save();
+		prisonPlayerList.remove(prisonPlayer);
 	}
 
 	public static PrisonPlayer getPrisonPlayer(Player player) {
