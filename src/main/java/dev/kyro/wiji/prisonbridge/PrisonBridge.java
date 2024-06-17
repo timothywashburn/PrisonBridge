@@ -5,13 +5,16 @@ import dev.kyro.wiji.prisonbridge.commands.BaseCommand;
 import dev.kyro.wiji.prisonbridge.controllers.LevelManager;
 import dev.kyro.wiji.prisonbridge.controllers.PAPIExtension;
 import dev.kyro.wiji.prisonbridge.controllers.PlayerManager;
+import dev.kyro.wiji.prisonbridge.objects.PrisonPlayer;
 import dev.kyro.wiji.prisonbridge.sql.TableManager;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Objects;
@@ -31,6 +34,11 @@ public class PrisonBridge extends JavaPlugin {
 
 		registerCommands();
 		registerListeners();
+
+		for(Player onlinePlayer : Bukkit.getOnlinePlayers()) {
+			PrisonPlayer prisonPlayer = new PrisonPlayer(onlinePlayer.getUniqueId());
+			PlayerManager.prisonPlayerList.add(prisonPlayer);
+		}
 	}
 
 	@Override
@@ -60,6 +68,15 @@ public class PrisonBridge extends JavaPlugin {
 
 		YamlConfiguration lang = YamlConfiguration.loadConfiguration(new InputStreamReader(defConfigStream, Charsets.UTF_8));
 		lang.options().copyDefaults(true);
+
+		try {
+			File file = new File(getDataFolder() + "/lang.yml");
+			if(!file.exists()) {
+				file.getParentFile().mkdirs();
+				file.createNewFile();
+			}
+			lang.save(file);
+		} catch(IOException e) { throw new RuntimeException(e); }
 	}
 
 	public static FileConfiguration getConfiguration() {

@@ -3,11 +3,15 @@ package dev.kyro.wiji.prisonbridge.controllers;
 import dev.kyro.wiji.prisonbridge.misc.AMisc;
 import dev.kyro.wiji.prisonbridge.objects.PrisonPlayer;
 import me.revils.revenchants.events.MineBlockEvent;
+import net.kyori.adventure.text.Component;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.event.player.AsyncPlayerPreLoginEvent;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
+import tech.mcprison.prison.util.ChatColor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +29,22 @@ public class PlayerManager implements Listener {
 
 		PrisonPlayer prisonPlayer = getPrisonPlayer(player);
 		prisonPlayer.blocks += event.getMinedBlockAmount();
+	}
+
+	@EventHandler
+	public void onJoin(AsyncPlayerPreLoginEvent event) {
+		for(PrisonPlayer prisonPlayer : prisonPlayerList) {
+			if(event.getUniqueId().equals(prisonPlayer.uuid)) {
+				event.disallow(AsyncPlayerPreLoginEvent.Result.KICK_OTHER, Component.empty());
+				event.setKickMessage(ChatColor.RED + "Duplicate playerdata found!");
+			}
+		}
+	}
+
+	@EventHandler
+	public void onJoin(PlayerJoinEvent event) {
+		PrisonPlayer prisonPlayer = new PrisonPlayer(event.getPlayer().getUniqueId());
+		prisonPlayerList.add(prisonPlayer);
 	}
 
 	@EventHandler

@@ -34,9 +34,9 @@ public class TableManager {
 			validFields++;
 		}
 
-//		new SQLTable(ConnectionInfo.PRISON_BRIDGE, "PlayerData",
-//				new TableStructure(prisonPlayerFields.toArray(new TableColumn[0]))
-//		);
+		new SQLTable(ConnectionInfo.PRISON_BRIDGE, "PlayerData",
+				new TableStructure(prisonPlayerFields.toArray(new TableColumn[0]))
+		);
 	}
 
 	protected static void registerTable(SQLTable table) {
