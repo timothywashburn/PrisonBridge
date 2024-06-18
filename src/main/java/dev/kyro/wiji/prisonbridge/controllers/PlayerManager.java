@@ -1,6 +1,5 @@
 package dev.kyro.wiji.prisonbridge.controllers;
 
-import dev.kyro.wiji.prisonbridge.misc.AMisc;
 import dev.kyro.wiji.prisonbridge.objects.PrisonPlayer;
 import me.revils.revenchants.events.MineBlockEvent;
 import net.kyori.adventure.text.Component;
@@ -23,9 +22,6 @@ public class PlayerManager implements Listener {
 	@EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
 	public void onBlockMine(MineBlockEvent event) {
 		Player player = event.getPlayer();
-
-//		TODO: Remove after confirmed functional
-		AMisc.sendMessage(player, "You have broken " + event.getMinedBlockAmount() + " block" + (event.getMinedBlockAmount() == 1 ? "" : "s"));
 
 		PrisonPlayer prisonPlayer = getPrisonPlayer(player);
 		prisonPlayer.blocks += event.getMinedBlockAmount();

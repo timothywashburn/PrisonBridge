@@ -1,5 +1,7 @@
 package dev.kyro.wiji.prisonbridge.sql;
 
+import dev.kyro.wiji.prisonbridge.PrisonBridge;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -37,7 +39,7 @@ public class SQLTable {
 		try {
 			statement.executeUpdate();
 		} catch(Exception e) {
-			System.out.println(statement.toString());
+			PrisonBridge.INSTANCE.getLogger().warning("Statement Errored: statement.toString()");
 			throw new RuntimeException(e);
 		}
 	}
