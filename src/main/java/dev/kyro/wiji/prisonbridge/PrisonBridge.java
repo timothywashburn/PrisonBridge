@@ -6,10 +6,7 @@ import dev.kyro.wiji.prisonbridge.controllers.LevelManager;
 import dev.kyro.wiji.prisonbridge.controllers.PAPIExtension;
 import dev.kyro.wiji.prisonbridge.controllers.PlayerManager;
 import dev.kyro.wiji.prisonbridge.objects.PrisonPlayer;
-import dev.kyro.wiji.prisonbridge.placeholders.BlocksForRankupPlaceholder;
-import dev.kyro.wiji.prisonbridge.placeholders.BlocksPlaceholder;
-import dev.kyro.wiji.prisonbridge.placeholders.PrestigePlaceholder;
-import dev.kyro.wiji.prisonbridge.placeholders.RankPlaceholder;
+import dev.kyro.wiji.prisonbridge.placeholders.*;
 import dev.kyro.wiji.prisonbridge.sql.TableManager;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -78,6 +75,10 @@ public class PrisonBridge extends JavaPlugin {
 		PAPIExtension.registerPlaceholder(new BlocksPlaceholder());
 		PAPIExtension.registerPlaceholder(new PrestigePlaceholder());
 		PAPIExtension.registerPlaceholder(new RankPlaceholder());
+
+		PAPIExtension.registerPlaceholder(new BlocksForRankupRawPlaceholder());
+		PAPIExtension.registerPlaceholder(new BlocksRawPlaceholder());
+		PAPIExtension.registerPlaceholder(new RankRawPlaceholder());
 	}
 
 	public void initConfig() {
