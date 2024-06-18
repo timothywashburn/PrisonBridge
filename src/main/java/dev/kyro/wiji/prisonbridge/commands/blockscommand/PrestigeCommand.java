@@ -1,5 +1,6 @@
 package dev.kyro.wiji.prisonbridge.commands.blockscommand;
 
+import dev.kyro.wiji.prisonbridge.PrisonBridge;
 import dev.kyro.wiji.prisonbridge.controllers.LevelManager;
 import dev.kyro.wiji.prisonbridge.controllers.PlayerManager;
 import dev.kyro.wiji.prisonbridge.misc.AMisc;
@@ -39,6 +40,12 @@ public class PrestigeCommand extends SubCommand {
 
 //		TODO: Call console command with placeholder for player name
 		prisonPlayer.prestige++;
+
+		List<String> onPrestigeCommands = PrisonBridge.getConfiguration().getStringList("on-prestige-commands");
+		for(String onPrestigeCommand : onPrestigeCommands) {
+			onPrestigeCommand.replace("{player}", player.getName());
+			onPrestigeCommand.replace("{prestige}", prisonPlayer.getPrestigeFormatted());
+		}
 	}
 
 	@Override

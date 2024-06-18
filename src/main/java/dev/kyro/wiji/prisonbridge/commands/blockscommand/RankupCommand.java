@@ -1,5 +1,6 @@
 package dev.kyro.wiji.prisonbridge.commands.blockscommand;
 
+import dev.kyro.wiji.prisonbridge.PrisonBridge;
 import dev.kyro.wiji.prisonbridge.controllers.PlayerManager;
 import dev.kyro.wiji.prisonbridge.misc.AMisc;
 import dev.kyro.wiji.prisonbridge.objects.PrisonPlayer;
@@ -39,6 +40,12 @@ public class RankupCommand extends SubCommand {
 
 //		TODO: Call console command with placeholder for player name
 		prisonPlayer.rank++;
+
+		List<String> onRankupCommands = PrisonBridge.getConfiguration().getStringList("on-rankup-commands");
+		for(String onRankupCommand : onRankupCommands) {
+			onRankupCommand.replace("{player}", player.getName());
+			onRankupCommand.replace("{rank}", prisonPlayer.getRankFormatted());
+		}
 	}
 
 	@Override
