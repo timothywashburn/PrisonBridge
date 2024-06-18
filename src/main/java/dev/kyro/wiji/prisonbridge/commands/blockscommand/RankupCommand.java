@@ -47,11 +47,10 @@ public class RankupCommand extends SubCommand {
 
 		List<String> onRankupCommands = PrisonBridge.getConfiguration().getStringList("on-rankup-commands");
 		for(String onRankupCommand : onRankupCommands) {
-			onRankupCommand.replace("{player}", player.getName());
-			onRankupCommand.replace("{rank}", prisonPlayer.getRankFormatted());
 
 			ConsoleCommandSender console = PrisonBridge.INSTANCE.getServer().getConsoleSender();
-			PrisonBridge.INSTANCE.getServer().dispatchCommand(console, onRankupCommand);
+			PrisonBridge.INSTANCE.getServer().dispatchCommand(console, onRankupCommand.replace("{player}",
+					player.getName()).replace("{rank}", prisonPlayer.getRankFormatted()));
 		}
 	}
 

@@ -47,11 +47,10 @@ public class PrestigeCommand extends SubCommand {
 
 		List<String> onPrestigeCommands = PrisonBridge.getConfiguration().getStringList("on-prestige-commands");
 		for(String onPrestigeCommand : onPrestigeCommands) {
-			onPrestigeCommand.replace("{player}", player.getName());
-			onPrestigeCommand.replace("{prestige}", prisonPlayer.getPrestigeFormatted());
 
 			ConsoleCommandSender console = PrisonBridge.INSTANCE.getServer().getConsoleSender();
-			PrisonBridge.INSTANCE.getServer().dispatchCommand(console, onPrestigeCommand);
+			PrisonBridge.INSTANCE.getServer().dispatchCommand(console, onPrestigeCommand.replace("{player}",
+					player.getName()).replace("{prestige}", prisonPlayer.getPrestigeFormatted()));
 		}
 	}
 
