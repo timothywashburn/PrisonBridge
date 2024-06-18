@@ -93,8 +93,8 @@ public class PrisonBridge extends JavaPlugin {
 			if(!file.exists()) {
 				file.getParentFile().mkdirs();
 				file.createNewFile();
+				lang.save(file);
 			}
-			lang.save(file);
 		} catch(IOException e) { throw new RuntimeException(e); }
 	}
 
