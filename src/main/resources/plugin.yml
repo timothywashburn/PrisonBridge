@@ -13,6 +13,4 @@ commands:
     aliases:
       - pb
   blocks:
-  prestige:
-  rankup:
   test:

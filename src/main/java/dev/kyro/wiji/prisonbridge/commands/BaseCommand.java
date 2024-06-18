@@ -1,8 +1,8 @@
 package dev.kyro.wiji.prisonbridge.commands;
 
-import dev.kyro.wiji.prisonbridge.commands.subcommands.AdminBlocksCommand;
-import dev.kyro.wiji.prisonbridge.commands.subcommands.SetPrestigeCommand;
-import dev.kyro.wiji.prisonbridge.commands.subcommands.SetRankCommand;
+import dev.kyro.wiji.prisonbridge.commands.basecommand.AdminBlocksCommand;
+import dev.kyro.wiji.prisonbridge.commands.basecommand.SetPrestigeCommand;
+import dev.kyro.wiji.prisonbridge.commands.basecommand.SetRankCommand;
 import dev.kyro.wiji.prisonbridge.misc.AMisc;
 import dev.kyro.wiji.prisonbridge.objects.SubCommand;
 import org.bukkit.command.Command;
@@ -44,14 +44,6 @@ public class BaseCommand implements CommandExecutor, TabCompleter {
 		return false;
 	}
 
-	public void sendHelpMessage(CommandSender sender, String label) {
-		AMisc.sendMessage(sender, "&8&m--------------------------------------------------");
-		for(SubCommand subCommand : subCommands) {
-			AMisc.sendMessage(sender, " &9&l>&f /" + label + " " + subCommand.executor + " &7" + subCommand.getUsageMessage());
-		}
-		AMisc.sendMessage(sender, "&8&m--------------------------------------------------");
-	}
-
 	@Override
 	public @Nullable List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
 		List<String> tabComplete = new ArrayList<>();
@@ -74,5 +66,13 @@ public class BaseCommand implements CommandExecutor, TabCompleter {
 		}
 
 		return null;
+	}
+
+	public void sendHelpMessage(CommandSender sender, String label) {
+		AMisc.sendMessage(sender, "&8&m--------------------------------------------------");
+		for(SubCommand subCommand : subCommands) {
+			AMisc.sendMessage(sender, " &9&l>&f /" + label + " " + subCommand.executor + " &7" + subCommand.getUsageMessage());
+		}
+		AMisc.sendMessage(sender, "&8&m--------------------------------------------------");
 	}
 }

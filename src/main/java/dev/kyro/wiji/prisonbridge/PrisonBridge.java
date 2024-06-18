@@ -56,9 +56,10 @@ public class PrisonBridge extends JavaPlugin {
 		Objects.requireNonNull(getCommand("prisonbridge")).setExecutor(baseCommand);
 		Objects.requireNonNull(getCommand("prisonbridge")).setTabCompleter(baseCommand);
 
-		Objects.requireNonNull(getCommand("blocks")).setExecutor(new BlocksCommand());
-		Objects.requireNonNull(getCommand("prestige")).setExecutor(new PrestigeCommand());
-		Objects.requireNonNull(getCommand("rankup")).setExecutor(new RankupCommand());
+		BlocksCommand blocksCommand = new BlocksCommand();
+		Objects.requireNonNull(getCommand("blocks")).setExecutor(blocksCommand);
+		Objects.requireNonNull(getCommand("blocks")).setTabCompleter(blocksCommand);
+
 		Objects.requireNonNull(getCommand("test")).setExecutor(new TestCommand());
 	}
 

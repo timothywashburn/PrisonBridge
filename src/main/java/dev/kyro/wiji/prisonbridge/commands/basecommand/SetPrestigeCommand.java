@@ -1,4 +1,4 @@
-package dev.kyro.wiji.prisonbridge.commands.subcommands;
+package dev.kyro.wiji.prisonbridge.commands.basecommand;
 
 import dev.kyro.wiji.prisonbridge.controllers.LevelManager;
 import dev.kyro.wiji.prisonbridge.controllers.PlayerManager;
