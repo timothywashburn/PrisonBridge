@@ -3,7 +3,7 @@ commands:
     notarget: "&c&lERROR!&7 Could not find the player {target}"
   blocks:
     self: "&9&lBLOCKS!&7 You have &9{blocks}"
-    other: "&9&lBLOCK!&7 {target} has &9{blocks}"
+    other: "&9&lBLOCKS!&7 {target} has &9{blocks}"
   prestige:
     notmaxrank: "&c&lERROR!&7 You need to reach the last rank before you can prestige"
     maxprestige: "&c&lERROR!&7 You are already the max prestige"
