@@ -3,6 +3,11 @@ sql-url: "localhost"
 sql-user: "admin"
 sql-pass: "password"
 
+on-rankup-commands:
+  - "broadcast global {player} has ranked up to {rank}"
+on-prestige-commands:
+  - "broadcast global {player} has prestiged to {prestige}"
+
 ranks: # Block amount for each Level
   A: 10
   B: 20
