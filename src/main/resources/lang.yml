@@ -2,15 +2,21 @@ commands:
   generic:
     notarget: "&c&lERROR!&7 Could not find the player {target}"
   blocks:
+    generic:
+      divider: "&8&m--------------------------------------------------"
+      commandhelp: "&9&l>&f /{command} {subcommand} &7{usage}"
     self: "&9&lBLOCKS!&7 You have &9{blocks}"
     other: "&9&lBLOCKS!&7 {target} has &9{blocks}"
-  prestige:
-    notmaxrank: "&c&lERROR!&7 You need to reach the last rank before you can prestige"
-    maxprestige: "&c&lERROR!&7 You are already the max prestige"
-  rankup:
-    notenoughblocks: "&c&lERROR!&7You need another &9{blocks} &7before you can rankup"
-    maxrank: "&c&lERROR!&7 You are already the max rank"
+    prestige:
+      notmaxrank: "&c&lERROR!&7 You need to reach the last rank before you can prestige"
+      maxprestige: "&c&lERROR!&7 You are already the max prestige"
+    rankup:
+      notenoughblocks: "&c&lERROR!&7 You need another &9{blocks} &7before you can rankup"
+      maxrank: "&c&lERROR!&7 You are already the max rank"
   admin:
+    generic:
+      divider: "&8&m--------------------------------------------------"
+      commandhelp: "&9&l>&f /{command} {subcommand} &7{usage}"
     blocks:
       added: "&9&lBLOCKS!&9 {blocks} &7have been given to &9{target}"
       received: "&9&lBLOCKS!&7 You have received &9{blocks}"

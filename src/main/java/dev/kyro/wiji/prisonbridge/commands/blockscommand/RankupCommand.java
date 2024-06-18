@@ -1,5 +1,6 @@
 package dev.kyro.wiji.prisonbridge.commands.blockscommand;
 
+import dev.kyro.wiji.prisonbridge.controllers.LevelManager;
 import dev.kyro.wiji.prisonbridge.PrisonBridge;
 import dev.kyro.wiji.prisonbridge.controllers.PlayerManager;
 import dev.kyro.wiji.prisonbridge.misc.AMisc;
@@ -29,17 +30,18 @@ public class RankupCommand extends SubCommand {
 		PrisonPlayer prisonPlayer = PlayerManager.getPrisonPlayer(player);
 
 		if (prisonPlayer.rank == 25) {
-			AMisc.sendConfigurableMessage(player, "commands.prestige.maxprestige");
+			AMisc.sendConfigurableMessage(player, "commands.blocks.rankup.maxprestige");
 			return;
 		}
 
 		if (!prisonPlayer.canRankup()) {
-			AMisc.sendConfigurableMessage(player, "commands.prestige.notenoughblocks",
+			AMisc.sendConfigurableMessage(player, "commands.blocks.rankup.notenoughblocks",
 					m -> m.replace("{blocks}", AMisc.formatBlocks(prisonPlayer.getRemainingBlocksToRankup())));
 			return;
 		}
 
 //		TODO: Call console command with placeholder for player name
+		prisonPlayer.blocks -= LevelManager.getBlocksForRank(prisonPlayer.prestige, prisonPlayer.rank);
 		prisonPlayer.rank++;
 
 		List<String> onRankupCommands = PrisonBridge.getConfiguration().getStringList("on-rankup-commands");

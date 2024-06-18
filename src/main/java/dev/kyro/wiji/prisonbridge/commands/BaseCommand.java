@@ -69,10 +69,12 @@ public class BaseCommand implements CommandExecutor, TabCompleter {
 	}
 
 	public void sendHelpMessage(CommandSender sender, String label) {
-		AMisc.sendMessage(sender, "&8&m--------------------------------------------------");
+		AMisc.sendConfigurableMessage(sender, "commands.admin.generic.divider");
 		for(SubCommand subCommand : subCommands) {
-			AMisc.sendMessage(sender, " &9&l>&f /" + label + " " + subCommand.executor + " &7" + subCommand.getUsageMessage());
+			AMisc.sendConfigurableMessage(sender, "commands.admin.generic.commandhelp",
+					m -> m.replace("{command}", label).replace("{subcommand}", subCommand.executor)
+							.replace("{usage}", subCommand.getUsageMessage()));
 		}
-		AMisc.sendMessage(sender, "&8&m--------------------------------------------------");
+		AMisc.sendConfigurableMessage(sender, "commands.admin.generic.divider");
 	}
 }

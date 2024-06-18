@@ -30,12 +30,12 @@ public class PrestigeCommand extends SubCommand {
 		PrisonPlayer prisonPlayer = PlayerManager.getPrisonPlayer(player);
 
 		if (prisonPlayer.prestige == LevelManager.totalPrestiges) {
-			AMisc.sendConfigurableMessage(player, "commands.rankup.maxrank");
+			AMisc.sendConfigurableMessage(player, "commands.blocks.prestige.maxrank");
 			return;
 		}
 
 		if (prisonPlayer.rank != 25) {
-			AMisc.sendConfigurableMessage(player, "commands.rankup.notmaxrank");
+			AMisc.sendConfigurableMessage(player, "commands.blocks.prestige.notmaxrank");
 			return;
 		}
 
