@@ -43,7 +43,11 @@ public class PrisonBridge extends JavaPlugin {
 
 	@Override
 	public void onDisable() {
-
+		for(Player onlinePlayer : Bukkit.getOnlinePlayers()) {
+			PrisonPlayer prisonPlayer = PlayerManager.getPrisonPlayer(onlinePlayer.getUniqueId());
+			assert prisonPlayer != null;
+			prisonPlayer.save();
+		}
 	}
 
 	public void registerCommands() {
