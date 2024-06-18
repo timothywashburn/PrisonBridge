@@ -62,8 +62,6 @@ public class TableStructure {
 			initial.append(")");
 		}
 
-		System.out.println(initial);
-
 		try {
 			PreparedStatement stmt = table.connection.prepareStatement(initial.toString());
 			stmt.execute();

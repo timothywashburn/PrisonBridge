@@ -23,7 +23,7 @@ public class AMisc {
 	public static void sendMessage(CommandSender sender, String message) {
 		if(message == null) return;
 		if(!(sender instanceof Player player)) {
-			System.out.println(message);
+			PrisonBridge.INSTANCE.getLogger().info(message);
 			return;
 		}
 
