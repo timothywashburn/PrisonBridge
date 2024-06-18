@@ -20,7 +20,7 @@ public class LevelManager implements Listener {
 
 		int prestige = 0;
 		while (PrisonBridge.getConfiguration().contains("prestiges." + prestige)) {
-			prestigeMultiplierMap.put(prestige, PrisonBridge.getConfiguration().getDouble(prestige + ""));
+			prestigeMultiplierMap.put(prestige, PrisonBridge.getConfiguration().getDouble("prestiges." + prestige));
 			totalPrestiges = prestige;
 			prestige++;
 		}
