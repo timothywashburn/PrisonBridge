@@ -1,25 +1,25 @@
 commands:
   generic:
-    notarget: "&c&lERROR!&7Could not find the player {target}"
+    notarget: "&c&lERROR!&7 Could not find the player {target}"
   blocks:
     self: "&9&lBLOCKS!&7 You have &9{blocks}"
-    other: "&9BLOCK!&7 {target} has &9{blocks}"
+    other: "&9&lBLOCK!&7 {target} has &9{blocks}"
   prestige:
-    notmaxlevel: "&c&lERROR!&7You need to reach the last rank before you can prestige"
-    maxprestige: "&c&lERROR!&7You are already the max prestige"
+    notmaxrank: "&c&lERROR!&7 You need to reach the last rank before you can prestige"
+    maxprestige: "&c&lERROR!&7 You are already the max prestige"
   rankup:
     notenoughblocks: "&c&lERROR!&7You need another &9{blocks} &7before you can rankup"
-    maxrank: "&c&lERROR!&7You are already the max rank"
+    maxrank: "&c&lERROR!&7 You are already the max rank"
   admin:
     blocks:
-      added: "&9&lBLOCKS!&9{blocks} &7have been given to &9{target}"
-      received: "&9&lBLOCKS!&7You have received &9{blocks}"
-      removed: "&9&lBLOCKS!&7{blocks} have been removed from &9{target}"
-      notenough: "&c&lERROR!&7{target} only has &9{blocks}"
-      set: "&9&lBLOCKS!&7{target} now has &9{blocks}"
+      added: "&9&lBLOCKS!&9 {blocks} &7have been given to &9{target}"
+      received: "&9&lBLOCKS!&7 You have received &9{blocks}"
+      removed: "&9&lBLOCKS!&7 {blocks} have been removed from &9{target}"
+      notenough: "&c&lERROR!&7 {target} only has &9{blocks}"
+      set: "&9&lBLOCKS!&7 {target} now has &9{blocks}"
     prestige:
-      set: "&b&lPRESTIGE!&7{target} is now prestige &9{prestige}"
-      setself: "&b&lPRESTIGE!&7You are now prestige &9{prestige}"
+      set: "&b&lPRESTIGE!&7 {target} is now prestige &9{prestige}"
+      setself: "&b&lPRESTIGE!&7 You are now prestige &9{prestige}"
     rank:
-      set: "&b&lRANK!&7{target} is now rank &9{rank}"
-      setself: "&b&lRANK!&7You are now rank &9{rank}"
+      set: "&b&lRANK!&7 {target} is now rank &9{rank}"
+      setself: "&b&lRANK!&7 You are now rank &9{rank}"

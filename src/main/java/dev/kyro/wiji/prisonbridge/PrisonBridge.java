@@ -1,11 +1,15 @@
 package dev.kyro.wiji.prisonbridge;
 
 import com.google.common.base.Charsets;
-import dev.kyro.wiji.prisonbridge.commands.BaseCommand;
+import dev.kyro.wiji.prisonbridge.commands.*;
 import dev.kyro.wiji.prisonbridge.controllers.LevelManager;
 import dev.kyro.wiji.prisonbridge.controllers.PAPIExtension;
 import dev.kyro.wiji.prisonbridge.controllers.PlayerManager;
 import dev.kyro.wiji.prisonbridge.objects.PrisonPlayer;
+import dev.kyro.wiji.prisonbridge.placeholders.BlocksForRankupPlaceholder;
+import dev.kyro.wiji.prisonbridge.placeholders.BlocksPlaceholder;
+import dev.kyro.wiji.prisonbridge.placeholders.PrestigePlaceholder;
+import dev.kyro.wiji.prisonbridge.placeholders.RankPlaceholder;
 import dev.kyro.wiji.prisonbridge.sql.TableManager;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -34,6 +38,7 @@ public class PrisonBridge extends JavaPlugin {
 
 		registerCommands();
 		registerListeners();
+		registerPlaceholders();
 
 		for(Player onlinePlayer : Bukkit.getOnlinePlayers()) {
 			PrisonPlayer prisonPlayer = new PrisonPlayer(onlinePlayer.getUniqueId());
@@ -54,11 +59,25 @@ public class PrisonBridge extends JavaPlugin {
 		BaseCommand baseCommand = new BaseCommand();
 		Objects.requireNonNull(getCommand("prisonbridge")).setExecutor(baseCommand);
 		Objects.requireNonNull(getCommand("prisonbridge")).setTabCompleter(baseCommand);
+
+		BlocksCommand blocksCommand = new BlocksCommand();
+		Objects.requireNonNull(getCommand("blocks")).setExecutor(blocksCommand);
+		Objects.requireNonNull(getCommand("blocks")).setTabCompleter(blocksCommand);
+
+		Objects.requireNonNull(getCommand("test")).setExecutor(new TestCommand());
 	}
 
 	public void registerListeners() {
 		Bukkit.getPluginManager().registerEvents(new PlayerManager(), this);
 		Bukkit.getPluginManager().registerEvents(new LevelManager(), this);
+	}
+
+	public void registerPlaceholders() {
+		new PAPIExtension("prisonbridge").register();
+		PAPIExtension.registerPlaceholder(new BlocksForRankupPlaceholder());
+		PAPIExtension.registerPlaceholder(new BlocksPlaceholder());
+		PAPIExtension.registerPlaceholder(new PrestigePlaceholder());
+		PAPIExtension.registerPlaceholder(new RankPlaceholder());
 	}
 
 	public void initConfig() {
@@ -88,9 +107,9 @@ public class PrisonBridge extends JavaPlugin {
 	}
 
 	public static String getLang(String path) {
-		File file = new File(INSTANCE.getServer().getPluginsFolder().getPath() + "/lang.yml");
+		File file = new File(INSTANCE.getDataFolder() + "/lang.yml");
 		YamlConfiguration config = YamlConfiguration.loadConfiguration(file);
-		new RuntimeException("WARNING! Config missing path: " + path).printStackTrace();
+		if (!config.contains(path)) new RuntimeException("WARNING! Config missing path: " + path).printStackTrace();
 		return config.getString(path);
 	}
 }

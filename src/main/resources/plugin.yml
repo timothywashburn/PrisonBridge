@@ -7,11 +7,10 @@ version: 1.0.0
 depend:
   - Prison
   - RevEnchants
+  - PlaceholderAPI
 commands:
   prisonbridge:
     aliases:
       - pb
   blocks:
-  prestige:
-  rankup:
-  atest:
+  test:

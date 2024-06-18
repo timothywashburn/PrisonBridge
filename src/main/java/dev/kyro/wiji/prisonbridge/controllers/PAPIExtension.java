@@ -1,7 +1,7 @@
 package dev.kyro.wiji.prisonbridge.controllers;
 
 import dev.kyro.wiji.prisonbridge.PrisonBridge;
-import dev.kyro.wiji.prisonbridge.objects.Placeholder;
+import dev.kyro.wiji.prisonbridge.objects.PAPIPlaceholder;
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PAPIExtension extends PlaceholderExpansion {
-	public static List<Placeholder> registeredPlaceholders = new ArrayList<>();
+	public static List<PAPIPlaceholder> registeredPlaceholders = new ArrayList<>();
 
 	private final String identifier;
 
@@ -48,7 +48,7 @@ public class PAPIExtension extends PlaceholderExpansion {
 
 		if(player == null) return "";
 
-		for(Placeholder registeredPlaceholder : registeredPlaceholders) {
+		for(PAPIPlaceholder registeredPlaceholder : registeredPlaceholders) {
 
 			if(!registeredPlaceholder.getIdentifier().equalsIgnoreCase(identifier)) continue;
 
@@ -56,5 +56,9 @@ public class PAPIExtension extends PlaceholderExpansion {
 		}
 
 		return null;
+	}
+
+	public static void registerPlaceholder(PAPIPlaceholder placeholder) {
+		registeredPlaceholders.add(placeholder);
 	}
 }
