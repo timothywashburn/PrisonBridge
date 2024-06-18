@@ -8,6 +8,7 @@ import dev.kyro.wiji.prisonbridge.objects.PrisonPlayer;
 import dev.kyro.wiji.prisonbridge.objects.SubCommand;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
@@ -38,13 +39,15 @@ public class PrestigeCommand extends SubCommand {
 			return;
 		}
 
-//		TODO: Call console command with placeholder for player name
 		prisonPlayer.prestige++;
 
 		List<String> onPrestigeCommands = PrisonBridge.getConfiguration().getStringList("on-prestige-commands");
 		for(String onPrestigeCommand : onPrestigeCommands) {
 			onPrestigeCommand.replace("{player}", player.getName());
 			onPrestigeCommand.replace("{prestige}", prisonPlayer.getPrestigeFormatted());
+
+			ConsoleCommandSender console = PrisonBridge.INSTANCE.getServer().getConsoleSender();
+			PrisonBridge.INSTANCE.getServer().dispatchCommand(console, onPrestigeCommand);
 		}
 	}
 

@@ -7,6 +7,7 @@ import dev.kyro.wiji.prisonbridge.objects.PrisonPlayer;
 import dev.kyro.wiji.prisonbridge.objects.SubCommand;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
@@ -45,6 +46,9 @@ public class RankupCommand extends SubCommand {
 		for(String onRankupCommand : onRankupCommands) {
 			onRankupCommand.replace("{player}", player.getName());
 			onRankupCommand.replace("{rank}", prisonPlayer.getRankFormatted());
+
+			ConsoleCommandSender console = PrisonBridge.INSTANCE.getServer().getConsoleSender();
+			PrisonBridge.INSTANCE.getServer().dispatchCommand(console, onRankupCommand);
 		}
 	}
 
