@@ -30,7 +30,7 @@ public class RankupCommand extends SubCommand {
 		PrisonPlayer prisonPlayer = PlayerManager.getPrisonPlayer(player);
 
 		if (prisonPlayer.rank == 25) {
-			AMisc.sendConfigurableMessage(player, "commands.blocks.rankup.maxprestige");
+			AMisc.sendConfigurableMessage(player, "commands.blocks.rankup.maxrank");
 			return;
 		}
 
@@ -40,9 +40,10 @@ public class RankupCommand extends SubCommand {
 			return;
 		}
 
-//		TODO: Call console command with placeholder for player name
 		prisonPlayer.blocks -= LevelManager.getBlocksForRank(prisonPlayer.prestige, prisonPlayer.rank);
 		prisonPlayer.rank++;
+		AMisc.sendConfigurableMessage(player, "commands.blocks.rankup.rankup",
+				m -> m.replace("{rank}", prisonPlayer.getRankFormatted()));
 
 		List<String> onRankupCommands = PrisonBridge.getConfiguration().getStringList("on-rankup-commands");
 		for(String onRankupCommand : onRankupCommands) {

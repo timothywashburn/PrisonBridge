@@ -30,7 +30,7 @@ public class PrestigeCommand extends SubCommand {
 		PrisonPlayer prisonPlayer = PlayerManager.getPrisonPlayer(player);
 
 		if (prisonPlayer.prestige == LevelManager.totalPrestiges) {
-			AMisc.sendConfigurableMessage(player, "commands.blocks.prestige.maxrank");
+			AMisc.sendConfigurableMessage(player, "commands.blocks.prestige.maxprestige");
 			return;
 		}
 
@@ -39,7 +39,11 @@ public class PrestigeCommand extends SubCommand {
 			return;
 		}
 
+		prisonPlayer.blocks = 0L;
+		prisonPlayer.rank = 0;
 		prisonPlayer.prestige++;
+		AMisc.sendConfigurableMessage(player, "commands.blocks.prestige.prestige",
+				m -> m.replace("{prestige}", prisonPlayer.getPrestigeFormatted()));
 
 		List<String> onPrestigeCommands = PrisonBridge.getConfiguration().getStringList("on-prestige-commands");
 		for(String onPrestigeCommand : onPrestigeCommands) {

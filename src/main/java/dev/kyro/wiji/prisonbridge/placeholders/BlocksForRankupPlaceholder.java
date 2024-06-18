@@ -1,5 +1,6 @@
 package dev.kyro.wiji.prisonbridge.placeholders;
 
+import dev.kyro.wiji.prisonbridge.PrisonBridge;
 import dev.kyro.wiji.prisonbridge.controllers.PlayerManager;
 import dev.kyro.wiji.prisonbridge.misc.AMisc;
 import dev.kyro.wiji.prisonbridge.objects.PAPIPlaceholder;
@@ -17,6 +18,7 @@ public class BlocksForRankupPlaceholder implements PAPIPlaceholder {
 		PrisonPlayer prisonPlayer = PlayerManager.getPrisonPlayer(player.getUniqueId());
 		assert prisonPlayer != null;
 
+		if(prisonPlayer.rank == 25) return PrisonBridge.getLang("misc.maxrank");
 		return AMisc.formatBlocks(prisonPlayer.getRemainingBlocksToRankup(), true);
 	}
 }
