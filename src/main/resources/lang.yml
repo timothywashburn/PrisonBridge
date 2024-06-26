@@ -33,3 +33,5 @@ commands:
     rank:
       set: '&b&lRANK!&7 {target} is now rank &9{rank}'
       setself: '&b&lRANK!&7 You are now rank &9{rank}'
+placeholders:
+  invalidrank: '&cInvalid Rank!'
