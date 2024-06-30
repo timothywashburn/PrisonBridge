@@ -24,6 +24,19 @@ public class SQLTable {
 		structure.build(this);
 
 		TableManager.registerTable(this);
+
+		new Thread(() -> {
+			while (true) {
+				try { this.connection.close(); } catch(SQLException e) { throw new RuntimeException(e); }
+				this.connection = connectionInfo.getConnection();
+
+				try {
+					Thread.sleep(1000L * 60);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
+		}).start();
 	}
 
 	public void executeUpdate(String query) {
