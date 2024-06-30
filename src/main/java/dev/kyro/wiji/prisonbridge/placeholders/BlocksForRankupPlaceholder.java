@@ -33,6 +33,6 @@ public class BlocksForRankupPlaceholder implements PAPIPlaceholder {
 
 		if(rankDigit < 0 || rankDigit > 25) return PrisonBridge.getLang("placeholders.invalidrank");
 
-		return AMisc.formatBlocks(LevelManager.getBlocksForRank(prisonPlayer.prestige, (rank - 65)));
+		return String.valueOf(LevelManager.getBlocksForRank(prisonPlayer.prestige, (rank - 65)));
 	}
 }
